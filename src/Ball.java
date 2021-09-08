@@ -1,53 +1,46 @@
 public class Ball {
-    private double radius;
-    private double weight;
-    String typ = "default";
-    private enum type{
-        FOOTBALL,
-        BASKETBALL,
-        VOLLEYBALL
+    private double x = 0.0;
+    private double y = 0.0;
+
+    public Ball(double x, double y) {
+        this.x = x;
+        this.y = y;
     }
 
     public Ball() {
-        weight = 0;
-        radius = 0;
     }
 
-    public Ball(double radius) {
-        weight = 0;
-        this.radius = radius;
+    public double getX() {
+        return x;
     }
 
-    public Ball(int weight) {
-        this.weight = weight;
-        radius = 0;
+    public void setX(double x) {
+        this.x = x;
     }
 
-    public Ball(double radius, int weight) {
-        this.radius = radius;
-        this.weight = weight;
+    public double getY() {
+        return y;
     }
 
-    public void whatType() {
-        if (weight > 330 && weight < 567 && radius > 93 && radius < 120) {
-            this.typ = String.valueOf(type.BASKETBALL);
-        }
+    public void setY(double y) {
+        this.y = y;
+    }
 
-        if (weight > 410 && weight < 450 && radius > 108 && radius < 111) {
-            this.typ = String.valueOf(type.FOOTBALL);
-        }
+    public void setXY(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
 
-        if (weight > 260 && weight < 280 && radius > 104 && radius < 107) {
-            this.typ = String.valueOf(type.VOLLEYBALL);
-        }
+    public void move(double xDisp, double yDisp) {
+        this.x = x + xDisp;
+        this.y = y + yDisp;
     }
 
     @Override
     public String toString() {
         return "Ball{" +
-                "radius=" + radius +
-                ", weight=" + weight +
-                ", type=" + typ +
+                "x=" + x +
+                ", y=" + y +
                 '}';
     }
 }
