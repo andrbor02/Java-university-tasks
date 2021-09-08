@@ -6,8 +6,8 @@ public class Square extends Rectangle{
         super(side, side);
     }
 
-    public Square(String color, boolean filled, double side) {
-        super(color, filled, side, side);
+    public Square(double side, String color, boolean filled) {
+        super(side, side, color, filled);
     }
 
     public double getSide() {
