@@ -1,46 +1,69 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
-import java.util.Scanner;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        HashMap<String, Pet> pets = new HashMap<>();
+    public static void main(java.lang.String[] args) {
+        String mercury = new String("Меркурий");
+        String venus = new String("Венера");
+        String earth = new String("Земля");
+        String mars = new String("Марс");
+        String jupiter = new String("Юпитер");
 
-        String name, pet;
-        for (int i = 0; i < 2; i++) {
-            name = in.next();
-            pet = in.next();
-            pets.put(name, Pet.whatPet(pet));
-        }
+        List<String> solarSystemV1 = new ArrayList<>(Arrays.asList(mercury, venus));
+        List<String> solarSystemV2 = Collections.unmodifiableList(new ArrayList<>(Arrays.asList(earth, mars, jupiter)));
+        System.out.println("Contains common elements: " + Collections.disjoint(solarSystemV1, solarSystemV2));
 
-        pets.put("Svinya", new Owl());
-        pets.put("sabaka", new Dog());
+        MyFunctions func = new MyFunctions();
 
-        for (Map.Entry<String, Pet> entry : pets.entrySet()) {
-            System.out.println("Name: " + entry.getKey() + "   Pet: "
-                    + entry.getValue());
-        }
-
+        func.add(solarSystemV1, jupiter);//добавления
+        System.out.println(solarSystemV1);
+        func.add(solarSystemV2, jupiter);
+        System.out.println(solarSystemV2);
         System.out.println();
 
-        HashMap<Integer, Integer> numbers = new HashMap<>();
-        Random random = new Random();
-        for (int i = 0; i < 100; i++) {
-            int number = random.nextInt(10);
-            if (numbers.containsKey(number)) {
-                numbers.put(number, numbers.get(number) + 1);
-            } else {
-                numbers.put(number, 1);
-            }
-        }
-        for (Map.Entry<Integer, Integer> number: numbers.entrySet()) {
-            System.out.println(number.getKey() + " " + number.getValue() + " times");
-        }
+        func.remove(solarSystemV1, 2);//удаления
+        System.out.println(solarSystemV1);
+        func.remove(solarSystemV2, 1);
+        System.out.println(solarSystemV2);
+        System.out.println();
+
+        func.replace(solarSystemV1, venus, earth);//изменения элемента
+        System.out.println(solarSystemV1);
+        func.replace(solarSystemV2, jupiter, earth);
+        System.out.println(solarSystemV2);
+        System.out.println();
+
+        func.shuffle(solarSystemV1);//перемешивания
+        System.out.println(solarSystemV1);
+        func.shuffle(solarSystemV2);
+        System.out.println(solarSystemV2);
+        System.out.println();
+
+        System.out.println(func.chooseRandom(solarSystemV1));//выбора случайной планеты
+        System.out.println(func.chooseRandom(solarSystemV2));
+        System.out.println();
+
+        System.out.println(func.indexOf(solarSystemV1, mercury));//показ индекса элемента
+        System.out.println(func.indexOf(solarSystemV2, jupiter));
+        System.out.println();
+
+        System.out.println(func.contains(solarSystemV1, jupiter));//проверка наличия элемента в списке
+        System.out.println(func.contains(solarSystemV2, earth));
+        System.out.println();
+
+        func.swap(solarSystemV1, 0, 1);//поменять два элемента местами
+        System.out.println(solarSystemV1);
+        func.swap(solarSystemV2, 0, 1);
+        System.out.println(solarSystemV2);
+        System.out.println();
+
+        func.rotate(solarSystemV1, 1);//сдвиг
+        System.out.println(solarSystemV1);
+        func.rotate(solarSystemV2, 2);
+        System.out.println(solarSystemV2);
+        System.out.println();
     }
 }
-/*
-1 3 5 7 9
-2 4 6 8 0
- */
