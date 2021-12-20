@@ -1,3 +1,5 @@
+package lab9;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -88,10 +90,10 @@ public class MyFunctions {
         try {
             List<String> firstHalf = new ArrayList<>();
             List<String> secondHalf = new ArrayList<>();
-            for (int i = distance; i < list.size(); i++) {
+            for (int i = distance - 1; i < list.size(); i++) {
                 firstHalf.add(list.get(i));
             }
-            for (int i = 0; i < distance; i++) {
+            for (int i = 0; i < distance - 1; i++) {
                 secondHalf.add(list.get(i));
             }
 

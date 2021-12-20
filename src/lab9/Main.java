@@ -1,3 +1,5 @@
+package lab9;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +14,7 @@ public class Main {
         String mars = new String("Марс");
         String jupiter = new String("Юпитер");
 
-        List<String> solarSystemV1 = new ArrayList<>(Arrays.asList(mercury, venus));
+        List<String> solarSystemV1 = new ArrayList<>(Arrays.asList(mercury, venus, earth));
         List<String> solarSystemV2 = Collections.unmodifiableList(new ArrayList<>(Arrays.asList(earth, mars, jupiter)));
         System.out.println("Contains common elements: " + Collections.disjoint(solarSystemV1, solarSystemV2));
 
@@ -60,7 +62,7 @@ public class Main {
         System.out.println(solarSystemV2);
         System.out.println();
 
-        func.rotate(solarSystemV1, 1);//сдвиг
+        func.rotate(solarSystemV1, 2);//сдвиг
         System.out.println(solarSystemV1);
         func.rotate(solarSystemV2, 2);
         System.out.println(solarSystemV2);
